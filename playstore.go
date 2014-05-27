@@ -1,14 +1,16 @@
 package appcrawl
 
 import (
-	"github.com/PuerkitoBio/goquery"
 	"net/http"
 	"net/url"
 	"strconv"
 	"strings"
+
+	"github.com/PuerkitoBio/goquery"
 )
 
-type PlayStore struct{}
+type PlayStore struct {
+}
 
 func (a PlayStore) searchUrl(sr SearchRequest) (playUrl string, postData string) {
 
@@ -47,7 +49,7 @@ func (a PlayStore) Search(sr SearchRequest) ([]App, error) {
 	}
 	req.Header.Set("Content-Type", "application/x-www-form-urlencoded; param=value")
 	req.Header.Add("User-Agent", "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_9_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/31.0.1650.57 Safari/537.36")
-	client := http.Client{}
+	client := sr.Client
 	resp, err := client.Do(req)
 
 	if err != nil {

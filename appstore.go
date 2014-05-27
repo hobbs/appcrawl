@@ -24,8 +24,7 @@ type appStoreApp struct {
 	RatingCount   int     `json:"userRatingCount"`
 }
 
-type AppStore struct {
-}
+type AppStore struct{}
 
 func (a AppStore) searchUrl(sr SearchRequest) string {
 	u, _ := url.Parse("https://itunes.apple.com/search")

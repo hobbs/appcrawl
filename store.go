@@ -1,6 +1,6 @@
 package appcrawl
 
-import ()
+import "net/http"
 
 type Store interface {
 	Search(req SearchRequest) ([]App, error)
@@ -21,4 +21,5 @@ type SearchRequest struct {
 	Query   string
 	Country string
 	Limit   int
+	Client  *http.Client
 }
